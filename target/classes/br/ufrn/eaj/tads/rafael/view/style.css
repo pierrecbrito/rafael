@@ -1,0 +1,24 @@
+
+.input {
+    -fx-padding: 5px 12px;
+    -fx-margin: 8px 0;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+
+.input:hover, .input:focus, .input:active {
+    -fx-border-color: #333;
+    -fx-border-width: 1px;
+    -fx-border-shadow: none;
+    -fx-outline: none;
+}
+
+.btn {
+    -fx-background-color: #001C30;
+    -fx-text-fill: white;
+    -fx-padding: 6px 20px;
+    -fx-margin: 8px 0;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+}
