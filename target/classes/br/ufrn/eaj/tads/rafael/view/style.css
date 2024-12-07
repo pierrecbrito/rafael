@@ -1,21 +1,22 @@
 
 .input {
-    -fx-padding: 5px 12px;
+    -fx-padding: 5px 7px;
     -fx-margin: 8px 0;
     -fx-border-color: #ccc;
     -fx-border-width: 1px;
     -fx-border-radius: 3px;
+    -fx-background-color: #EDF0F2;
 }
 
-.input:hover, .input:focus, .input:active {
-    -fx-border-color: #333;
+.input:hover, .input:focus, .input:active, .input:focused {
+    -fx-border-color: #20178a;
     -fx-border-width: 1px;
     -fx-border-shadow: none;
     -fx-outline: none;
 }
 
 .btn {
-    -fx-background-color: #001C30;
+    -fx-background-color: #3D348B;
     -fx-text-fill: white;
     -fx-padding: 6px 20px;
     -fx-margin: 8px 0;
