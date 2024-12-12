@@ -22,4 +22,5 @@
     -fx-margin: 8px 0;
     -fx-border-width: 0;
     -fx-cursor: hand;
+    -fx-border-radius: 3px;
 }
