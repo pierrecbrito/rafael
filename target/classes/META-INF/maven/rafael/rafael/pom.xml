@@ -44,10 +44,16 @@
         <artifactId>javafx-fxml</artifactId>
         <version>23.0.1</version>
     </dependency>
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.5.4</version> <!-- Verifique a versão mais recente -->
+    </dependency>
   </dependencies>
-  
 	<properties>
 	    <javafx.version>21</javafx.version>
 	    <javafx.platform>win</javafx.platform>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 </project>

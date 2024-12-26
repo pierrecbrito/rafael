@@ -36,46 +36,111 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <VBox maxWidth="180.0" prefHeight="400.0" prefWidth="180.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" spacing="15.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.eaj.tads.rafael.controller.DashboardController">
+   <children>
+      <HBox alignment="CENTER_RIGHT" maxWidth="390.0" prefHeight="50.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@logo.png" />
-               </image>
-            </ImageView>
-            <Label prefHeight="17.0" prefWidth="202.0" text="Página Inicial">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" maxHeight="80.0" prefHeight="89.0" prefWidth="126.0" style="-fx-background-color: #F6F6F6;">
+               <children>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@user.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelUsername" text="Pierre Brito">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-   </left>
-   <center>
-      <VBox prefHeight="200.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
+      </HBox>
+      <GridPane hgap="5.0" maxWidth="390.0" prefHeight="120.0" prefWidth="390.0" vgap="5.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <ImageView fitHeight="268.0" fitWidth="1359.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-radius: 10px;">
-               <image>
-                  <Image url="@banner-paginainicial.png" />
-               </image>
-            </ImageView>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="7.0" style="-fx-background-color: #3D348B; -fx-cursor: pointer;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@usuarios.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Clientes" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="7.0" style="-fx-background-color: #3D348B; -fx-cursor: pointer;" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Médicos.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Médicos" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="142.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="7.0" style="-fx-background-color: #3D348B; -fx-cursor: pointer;" GridPane.columnIndex="2">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@consultas.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Consultas" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="274.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="7.0" style="-fx-background-color: #3D348B; -fx-cursor: pointer;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@sair.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Sair" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
-      </VBox>
-   </center>
-</BorderPane>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets top="60.0" />
+   </padding>
+</VBox>
