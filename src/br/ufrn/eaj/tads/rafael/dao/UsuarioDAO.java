@@ -1,8 +1,10 @@
 package br.ufrn.eaj.tads.rafael.dao;
 
+import br.ufrn.eaj.tads.rafael.model.Pessoa;
 import br.ufrn.eaj.tads.rafael.model.Usuario;
 import br.ufrn.eaj.tads.rafael.util.AlertUtil;
 import br.ufrn.eaj.tads.rafael.util.DatabaseUtil;
+import br.ufrn.eaj.tads.rafael.util.DateConversion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +22,7 @@ public class UsuarioDAO {
         	Connection connection = DatabaseUtil.getConnection();
             PreparedStatement stmt = connection.prepareStatement(sql);
             
-            stmt.setString(1, usuario.getNome());
+            //stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getSenha());
             stmt.executeUpdate();
@@ -37,7 +39,7 @@ public class UsuarioDAO {
         	Connection connection = DatabaseUtil.getConnection();
             PreparedStatement stmt = connection.prepareStatement(sql);
             
-            stmt.setString(1, usuario.getNome());
+            //stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getSenha());
             stmt.setLong(4, usuario.getId());
@@ -77,7 +79,7 @@ public class UsuarioDAO {
             if (rs.next()) {
                 usuario = new Usuario();
                 usuario.setId(rs.getLong("id"));
-                usuario.setNome(rs.getString("nome"));
+                //usuario.setNome(rs.getString("nome"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
             }
@@ -101,7 +103,7 @@ public class UsuarioDAO {
             while (rs.next()) {
                 Usuario usuario = new Usuario();
                 usuario.setId(rs.getLong("id"));
-                usuario.setNome(rs.getString("nome"));
+                //usuario.setNome(rs.getString("nome"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
                 usuarios.add(usuario);
@@ -114,12 +116,15 @@ public class UsuarioDAO {
         return usuarios;
     }
     
-	public Usuario logar(String email, String senha) {
-        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+    public Usuario logar(String email, String senha) {
+        String sql = "SELECT u.id, u.email, u.senha, p.id AS pessoa_id, p.nome, p.telefone, p.data_nascimento "
+                   + "FROM usuario u "
+                   + "JOIN pessoa p ON u.id_pessoa = p.id "
+                   + "WHERE u.email = ? AND u.senha = ?";
         Usuario usuario = null;
 
         try {
-        	Connection connection = DatabaseUtil.getConnection();
+            Connection connection = DatabaseUtil.getConnection();
             PreparedStatement stmt = connection.prepareStatement(sql);
             
             stmt.setString(1, email);
@@ -127,11 +132,22 @@ public class UsuarioDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
+                // Criar o objeto Usuario e preencher os dados
                 usuario = new Usuario();
                 usuario.setId(rs.getLong("id"));
-                usuario.setNome(rs.getString("nome"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
+
+                // Criar o objeto Pessoa e preencher os dados
+                Pessoa pessoa = new Pessoa(
+                    rs.getInt("pessoa_id"),
+                    rs.getString("nome"),
+                    rs.getString("telefone"),
+                    DateConversion.convertToLocalDate(rs.getDate("data_nascimento"))
+                );
+
+                // Definir a Pessoa no objeto Usuario
+                usuario.setPessoa(pessoa);
             }
 
         } catch (SQLException e) {
@@ -139,5 +155,6 @@ public class UsuarioDAO {
         }
         
         return usuario;
-	}
+    }
+
 }
