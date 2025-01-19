@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,11 +108,18 @@ public class ClienteDAO {
 
 	public boolean deleteCliente(Cliente cliente) {
 		String sql = "DELETE FROM cliente WHERE id = ?";
+		String sqlPessoa = "DELETE FROM pessoa WHERE id = ?";
         try {
             Connection connection = DatabaseUtil.getConnection();
+            
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, cliente.getId());
             stmt.executeUpdate();
+            
+            stmt = connection.prepareStatement(sqlPessoa);
+            stmt.setInt(1, cliente.getPessoa().getId());
+            stmt.executeUpdate();
+            
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

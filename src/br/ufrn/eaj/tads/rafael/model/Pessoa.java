@@ -59,5 +59,9 @@ public class Pessoa {
                 ", dataNascimento='" + dataNascimento + '\'' +
                 '}';
     }
+
+	public Object nomeProperty() {
+		return this.getNome();
+	}
 }
 

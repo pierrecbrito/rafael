@@ -56,5 +56,16 @@ public class DashboardController {
 	        e.printStackTrace();
 	    }
     }
+	
+	@FXML
+    private void selectMedicos(MouseEvent event) {
+		try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/ufrn/eaj/tads/rafael/view/medicos.fxml"));
+	        Parent vboxClientes = loader.load();
+	        borderPanelMain.setCenter(vboxClientes);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+    }
 
 }

@@ -75,7 +75,8 @@ public class AddClienteController {
 		}
     }
     
-    private boolean isInputValid() { String errorMessage = "";
+    private boolean isInputValid() { 
+    	String errorMessage = "";
 
 	    if (nomeField.getText() == null || nomeField.getText().isEmpty()) {
 	        errorMessage += "Nome inválido!\n";
