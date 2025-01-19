@@ -67,5 +67,16 @@ public class DashboardController {
 	        e.printStackTrace();
 	    }
     }
+	
+	@FXML
+    private void selectConsultas(MouseEvent event) {
+		try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/ufrn/eaj/tads/rafael/view/consultas.fxml"));
+	        Parent vboxClientes = loader.load();
+	        borderPanelMain.setCenter(vboxClientes);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+    }
 
 }
