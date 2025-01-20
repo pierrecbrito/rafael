@@ -14,11 +14,21 @@ O objetivo deste sistema é facilitar o gerenciamento de informações relaciona
 ## Funcionalidades
 
 - **Gerenciamento de Pacientes**: Adicionar, visualizar, atualizar e remover informações de pacientes.
-- **Gerenciamento de Médicos**: Controle sobre os dados dos médicos, incluindo especialidades.
+- **Gerenciamento de Médicos**: Controle sobre os dados dos médicos.
 - **Agendamento de Consultas**: Sistema para agendar, modificar ou cancelar consultas.
 
+
+- **Interface de login**:
+  ![Tela de Login](login.png)
+  
+- **Interface de dashboard**:
+  ![Tela de Dashboard](dashboard.png)
+  
+- **Interface de consultas**:
+  ![Tela de Consultas](consultas.png)
+
 ## Diagrama ER
-![Imagem do Projeto](diagrama-er.png)
+![Diagrama ER](diagrama-er.png)
 
 ## Dicionário de Dados
 
