@@ -17,14 +17,14 @@ O objetivo deste sistema é facilitar o gerenciamento de informações relaciona
 - **Gerenciamento de Médicos**: Controle sobre os dados dos médicos.
 - **Agendamento de Consultas**: Sistema para agendar, modificar ou cancelar consultas.
 
-
-- **Interface de login**:
+## Algumas interfaces:
+**Interface de login**:
   ![Tela de Login](login.png)
   
-- **Interface de dashboard**:
+**Interface de dashboard**:
   ![Tela de Dashboard](dashboard.png)
   
-- **Interface de consultas**:
+**Interface de consultas**:
   ![Tela de Consultas](consultas.png)
 
 ## Diagrama ER
