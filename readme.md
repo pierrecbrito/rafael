@@ -75,14 +75,10 @@ O objetivo deste sistema é facilitar o gerenciamento de informações relaciona
 | observacoes       | TEXT         |         | Observações ou notas da consulta |  |
 
 
-## Como Usar
+## Tecnologias:
+- Java 21
+- JavaFX
+- Banco PostgreSQL
+- JDBC
+- Eclipse IDE
 
-[Descreva aqui como instalar, configurar e utilizar o sistema.]
-
-## Contribuição
-
-Contribuições são bem-vindas! Por favor, leia nosso [Guia de Contribuição](CONTRIBUTING.md) para detalhes sobre o nosso processo de pull request e sobre o código de conduta.
-
-## Licença
-
-[Especifique a licença do projeto aqui, por exemplo, MIT, GPL, etc.]
