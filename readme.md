@@ -84,6 +84,8 @@ O objetivo deste sistema é facilitar o gerenciamento de informações relaciona
 | data_consulta     | TIMESTAMP    |         | Data e hora da consulta | NOT NULL |
 | observacoes       | TEXT         |         | Observações ou notas da consulta |  |
 
+## Diagrama de classes
+![Diagrama de Classes](diagrama-classes.png)
 
 ## Tecnologias:
 - Java 21
