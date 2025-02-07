@@ -1,96 +1,93 @@
-# Sistema de Gerenciamento de Consultas Médicas
+# Medical Appointment Management System
 
-Este projeto implementa um sistema CRUD (Create, Read, Update, Delete) para gerenciar pacientes, médicos e consultas em um ambiente clínico.
+This project implements a CRUD (Create, Read, Update, Delete) system to manage patients, doctors, and appointments in a clinical environment.
 
-## Visão Geral
+## Overview
 
-O objetivo deste sistema é facilitar o gerenciamento de informações relacionadas a pacientes, médicos e suas respectivas consultas. Ele permite:
+The goal of this system is to facilitate the management of information related to patients, doctors, and their respective appointments. It allows:
 
-- **Criação** de novos registros de pacientes, médicos e consultas.
-- **Leitura** das informações existentes.
-- **Atualização** de dados quando necessário.
-- **Exclusão** de registros que não são mais necessários.
+- **Creation** of new records for patients, doctors, and appointments.
+- **Reading** of existing information.
+- **Updating** data when necessary.
+- **Deleting** records that are no longer needed.
 
-## Funcionalidades
+## Features
 
-- **Gerenciamento de Pacientes**: Adicionar, visualizar, atualizar e remover informações de pacientes.
-- **Gerenciamento de Médicos**: Controle sobre os dados dos médicos.
-- **Agendamento de Consultas**: Sistema para agendar, modificar ou cancelar consultas.
+- **Patient Management**: Add, view, update, and remove patient information.
+- **Doctor Management**: Control over doctor data.
+- **Appointment Scheduling**: System to schedule, modify, or cancel appointments.
 
-## Algumas interfaces:
-**Interface de login**:
-  ![Tela de Login](login.png)
+## Some interfaces:
+**Login Interface**:
+  ![Login Screen](login.png)
   
-**Interface de dashboard**:
-  ![Tela de Dashboard](dashboard.png)
+**Dashboard Interface**:
+  ![Dashboard Screen](dashboard.png)
   
-**Interface de consultas**:
-  ![Tela de Consultas](consultas.png)
+**Appointments Interface**:
+  ![Appointments Screen](consultas.png)
 
-## Diagrama ER
-![Diagrama ER](diagrama-er.png)
+## ER Diagram
+![ER Diagram](diagrama-er.png)
 
-## Dicionário de Dados
+## Data Dictionary
 
-### Tabela: `pessoa`
-| Nome do Atributo | Tipo de Dado | Tamanho | Descrição | Restrições |
-|-------------------|--------------|---------|------------|-------------|
-| id                | SERIAL       |         | Identificador único da pessoa | Chave Primária |
-| nome              | VARCHAR      | 100     | Nome completo da pessoa | NOT NULL |
-| telefone          | VARCHAR      | 15      | Número de telefone da pessoa |  |
-| data_nascimento   | DATE         |         | Data de nascimento da pessoa |  |
+### Table: `person`
+| Attribute Name    | Data Type    | Size    | Description                       | Constraints       |
+|-------------------|--------------|---------|-----------------------------------|-------------------|
+| id                | SERIAL       |         | Unique identifier of the person   | Primary Key       |
+| name              | VARCHAR      | 100     | Full name of the person           | NOT NULL          |
+| phone             | VARCHAR      | 15      | Phone number of the person        |                   |
+| birth_date        | DATE         |         | Birth date of the person          |                   |
 
-### Tabela: `usuario`
-| Nome do Atributo | Tipo de Dado | Tamanho | Descrição | Restrições |
-|-------------------|--------------|---------|------------|-------------|
-| id                | SERIAL       |         | Identificador único do usuário | Chave Primária |
-| id_pessoa         | INT          |         | Chave estrangeira para a tabela pessoa | NOT NULL, FK para `pessoa(id)` |
-| email             | VARCHAR      | 100     | Endereço de email do usuário | UNIQUE, NOT NULL |
-| senha             | VARCHAR      | 50      | Senha do usuário (hash recomendado) | NOT NULL |
+### Table: `user`
+| Attribute Name    | Data Type    | Size    | Description                       | Constraints       |
+|-------------------|--------------|---------|-----------------------------------|-------------------|
+| id                | SERIAL       |         | Unique identifier of the user     | Primary Key       |
+| person_id         | INT          |         | Foreign key to the person table   | NOT NULL, FK to `person(id)` |
+| email             | VARCHAR      | 100     | User's email address              | UNIQUE, NOT NULL  |
+| password          | VARCHAR      | 50      | User's password (hash recommended)| NOT NULL          |
 
-### Tabela: `especialidade`
-| Nome do Atributo | Tipo de Dado | Tamanho | Descrição | Restrições |
-|-------------------|--------------|---------|------------|-------------|
-| id                | SERIAL       |         | Identificador único da especialidade | Chave Primária |
-| nome              | VARCHAR      | 100     | Nome da especialidade médica | UNIQUE, NOT NULL |
+### Table: `specialty`
+| Attribute Name    | Data Type    | Size    | Description                       | Constraints       |
+|-------------------|--------------|---------|-----------------------------------|-------------------|
+| id                | SERIAL       |         | Unique identifier of the specialty| Primary Key       |
+| name              | VARCHAR      | 100     | Name of the medical specialty     | UNIQUE, NOT NULL  |
 
-### Tabela: `medico`
-| Nome do Atributo | Tipo de Dado | Tamanho | Descrição | Restrições |
-|-------------------|--------------|---------|------------|-------------|
-| id                | SERIAL       |         | Identificador único do médico | Chave Primária |
-| id_pessoa         | INT          |         | Chave estrangeira para a tabela pessoa | NOT NULL, FK para `pessoa(id)` |
-| id_usuario        | INT          |         | Chave estrangeira para a tabela usuário | NOT NULL, FK para `usuario(id)` |
-| crm               | VARCHAR      | 20      | Registro de médico (CRM) | UNIQUE, NOT NULL |
+### Table: `doctor`
+| Attribute Name    | Data Type    | Size    | Description                       | Constraints       |
+|-------------------|--------------|---------|-----------------------------------|-------------------|
+| id                | SERIAL       |         | Unique identifier of the doctor   | Primary Key       |
+| person_id         | INT          |         | Foreign key to the person table   | NOT NULL, FK to `person(id)` |
+| user_id           | INT          |         | Foreign key to the user table     | NOT NULL, FK to `user(id)` |
+| crm               | VARCHAR      | 20      | Doctor's registration (CRM)       | UNIQUE, NOT NULL  |
 
-### Tabela: `medico_especialidade`
-| Nome do Atributo  | Tipo de Dado | Tamanho | Descrição | Restrições |
-|-------------------|--------------|---------|------------|-------------|
-| id_medico         | INT          |         | Chave estrangeira para a tabela médico | NOT NULL, FK para `medico(id)`, Parte da PK |
-| id_especialidade  | INT          |         | Chave estrangeira para a tabela especialidade | NOT NULL, FK para `especialidade(id)`, Parte da PK |
+### Table: `doctor_specialty`
+| Attribute Name    | Data Type    | Size    | Description                       | Constraints       |
+|-------------------|--------------|---------|-----------------------------------|-------------------|
+| doctor_id         | INT          |         | Foreign key to the doctor table   | NOT NULL, FK to `doctor(id)`, Part of PK |
+| specialty_id      | INT          |         | Foreign key to the specialty table| NOT NULL, FK to `specialty(id)`, Part of PK |
 
-### Tabela: `cliente`
-| Nome do Atributo | Tipo de Dado | Tamanho | Descrição | Restrições |
-|-------------------|--------------|---------|------------|-------------|
-| id                | SERIAL       |         | Identificador único do cliente | Chave Primária |
-| id_pessoa         | INT          |         | Chave estrangeira para a tabela pessoa | NOT NULL, FK para `pessoa(id)` |
-| cpf               | VARCHAR      | 14      | Cadastro de Pessoas Físicas (CPF) do cliente | UNIQUE, NOT NULL |
+### Table: `client`
+| Attribute Name    | Data Type    | Size    | Description                       | Constraints       |
+|-------------------|--------------|---------|-----------------------------------|-------------------|
+| id                | SERIAL       |         | Unique identifier of the client   | Primary Key       |
+| person_id         | INT          |         | Foreign key to the person table   | NOT NULL, FK to `person(id)` |
+| cpf               | VARCHAR      | 14      | Client's CPF (Individual Taxpayer Registry) | UNIQUE, NOT NULL  |
 
-### Tabela: `consulta`
-| Nome do Atributo | Tipo de Dado | Tamanho | Descrição | Restrições |
-|-------------------|--------------|---------|------------|-------------|
-| id                | SERIAL       |         | Identificador único da consulta | Chave Primária |
-| id_medico         | INT          |         | Chave estrangeira para a tabela médico | NOT NULL, FK para `medico(id)` |
-| id_cliente        | INT          |         | Chave estrangeira para a tabela cliente | NOT NULL, FK para `cliente(id)` |
-| data_consulta     | TIMESTAMP    |         | Data e hora da consulta | NOT NULL |
-| observacoes       | TEXT         |         | Observações ou notas da consulta |  |
+### Table: `appointment`
+| Attribute Name    | Data Type    | Size    | Description                       | Constraints       |
+|-------------------|--------------|---------|-----------------------------------|-------------------|
+| id                | SERIAL       |         | Unique identifier of the appointment | Primary Key   |
+| doctor_id         | INT          |         | Foreign key to the doctor table   | NOT NULL, FK to `doctor(id)` |
+| client_id         | INT          |         | Foreign key to the client table   | NOT NULL, FK to `client(id)` |
+| appointment_date  | TIMESTAMP    |         | Date and time of the appointment  | NOT NULL          |
+| notes             | TEXT         |         | Notes or observations of the appointment |               |
 
-## Diagrama de classes
-![Diagrama de Classes](diagrama-classes.png)
-
-## Tecnologias:
+## Technologies:
 - Java 21
 - JavaFX
-- Banco PostgreSQL
+- PostgreSQL Database
 - JDBC
 - Eclipse IDE
 
